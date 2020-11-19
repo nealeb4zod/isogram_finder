@@ -5,15 +5,10 @@ const IsogramFinder = function (word) {
 
 IsogramFinder.prototype.isIsogram = function () {
 
-  const wordArray = this.word.split('');
-  const wordArrayLowerCase = wordArray.map(letter => letter.toLowerCase());
+  const wordArray = this.word.toLowerCase().split('');
+  const uniqueLettersList = [...new Set(wordArray)]
 
-  function onlyUnique(value, index, self) {
-    return self.indexOf(value) === index;
-  }
-  const isogram = wordArrayLowerCase.filter(onlyUnique)
-
-  if (isogram.length === wordArrayLowerCase.length) {
+  if (uniqueLettersList.length === wordArrayLowerCase.length) {
     return true
   } else {
     return false
